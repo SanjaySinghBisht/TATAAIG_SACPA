@@ -1,0 +1,80 @@
+<div class="theme-container" #target>
+    <div class="page-title">
+        <div (click)="routeBack()" class="nav-btn">
+            <svg>
+                <use xlink:href="#ICON_Arrow" />
+            </svg>
+        </div>
+        <div class="head-lg heading">PREVIOUS POLICY DETAILS</div>
+        <div class="pull-right breadcrum">
+            <span class="head-sm">Application / </span> <span class="head-sm">Previous Policy Details</span>
+        </div>
+    </div>
+    <form [formGroup]="policyDetails" class="theme-form mt-mobile">
+        <div class="customer-detail theme-card w-100 p-0">
+            <div class="card-content">
+                <div class="row">
+                    <div [ngClass]="{'complete': policyDetails.value.policyEndDate}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm form-control-line-height">PREVIOUS POLICY END DATE</div>
+                        <input #policyEndDate type="text" formControlName="policyEndDate" name="policyEndDate"
+                            id="policyEndDate" (keyup.enter)="formatLikeExcel('endDate')"
+                            (focusout)="formatLikeExcel('endDate')" (keypress)="isNumberKey($event)"
+                            class="form-control" placeholder="DD/MM/YYYY" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                        <!-- <span class="error-msg">
+                            Invalid Date
+                         </span> -->
+                    </div>
+                    <div [ngClass]="{'complete': policyDetails.value.policyStartDate}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm form-control-line-height">PREVIOUS POLICY START DATE</div>
+                        <input #policyStartDate type="text" formControlName="policyStartDate" name="policyStartDate"
+                            id="policyStartDate" (keyup.enter)="formatLikeExcel('startDate')"
+                            (focusout)="formatLikeExcel('startDate')" (keypress)="isNumberKey($event)"
+                            class="form-control" placeholder="DD/MM/YYYY" autocomplete="off">
+                        <!-- <span class="error-msg">
+                            Required *
+                        </span> -->
+                        <span class="error-msg">
+                            Invalid Date
+                         </span>
+                    </div>
+                    <div [ngClass]="{'complete': policyDetails.value.insurerName}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm form-control-line-height">PREVIOUS POLICY INSURER NAME</div>
+                        <ng-select formControlName="insurerName" [items]="insurerArray" placeholder="Select"
+                            class="ngSelectOption 1">
+                        </ng-select>
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': policyDetails.value.expiringPolicyNumber}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm form-control-line-height">EXPIRING POLICY NUMBER</div>
+                        <input type="text" formControlName="expiringPolicyNumber" class="form-control"
+                            name="expiringPolicyNumber" id="expiringPolicyNumber" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': policyDetails.value.insurerAddres}"
+                        class="form-field col-md-6 col-lg-6 col-xl-5">
+                        <div class="head-sm form-control-line-height">PREVIOUS POLICY INSURER ADDRESS</div>
+                        <input type="text" formControlName="insurerAddres" class="form-control" name="insurerAddres"
+                            id="insurerAddres" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-block m-t-lg">
+            <button type="button" (click)="save()" class="btn primary-btn theme-lg-btn">Next</button>
+        </div>
+    </form>
+</div>

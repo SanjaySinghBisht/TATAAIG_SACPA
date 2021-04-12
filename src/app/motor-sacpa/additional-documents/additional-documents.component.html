@@ -1,0 +1,168 @@
+<div class="theme-container" #target>
+    <div class="page-title">
+        <div (click)="routeBack()" class="nav-btn">
+            <svg>
+                <use xlink:href="#ICON_Arrow" />
+            </svg>
+        </div>
+        <div class="head-lg heading">ADDITIONAL DOCUMENTS</div>
+        <div class="pull-right breadcrum">
+            <span class="head-sm">Application / </span> <span class="head-sm">Additional Documents</span>
+        </div>
+    </div>
+    <form [formGroup]="documentForm" class="theme-form mt-mobile">
+        <div class="customer-detail theme-card w-100 p-0">
+            <div class="card-content">
+                <div class="row">
+                    <div class="form-field col-md-6 col-lg-4">
+                        <div class="head-sm">DOCUMENT DETAILS</div>
+                        <div class="form-group theme-radio radio-btn">
+                            <input type="radio" id="uploadNow" value="Upload Now" formControlName="documentDetails" name="documentDetails">
+                            <label for="uploadNow"><span>Upload Now</span></label>
+                        </div>
+                        <div class="form-group theme-radio radio-btn">
+                            <input type="radio" id="uploadLater" value="Upload Later" formControlName="documentDetails" name="documentDetails">
+                            <label for="uploadLater"><span>Upload Later</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="documentForm.value.documentDetails == 'Upload Now'">
+                    <div class="row border-as-bottom">
+                        <div class="w-100" *ngFor="let policyDoc of documentForm.value.previousYearPolicyCopy; index as i">
+                            <div *ngIf="i>0" class="fw-100 pt-2 border-as-top mt-4">
+                                <button (click)="removeFileFromArr(i,'previousYearPolicyCopy')" class="btn quotelist-btn pull-right m-0">
+                                    <svg class="svg-xxs">
+                                        <use xlink:href="#ICON_Cross" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="form-field col-md-6 col-lg-4 col-xl-3 mb-4 mt-2 upload-documents-form-field" [ngClass]="{'mt-4': i>0}">
+                                <div class="head-sm">PREVIOUS YEAR POLICY COPY</div>
+                                <div class="custom-file">
+                                    <input type="file" accept="image/jpeg,image/png,application/pdf"
+                                        (change)="onFileChange($event,'previousYearPolicyCopy',i)"
+                                        class="custom-file-input" id="{{'customFile'+i}}">
+                                    <label *ngIf="!policyDoc['document_'+i+'_name']"
+                                        class="custom-file-label form-control" for="{{'customFile'+i}}"><svg
+                                            class="icon-uploadFile m-r-sm">
+                                            <use xlink:href="#ICON_FileUpload" /></svg>Upload file</label>
+                                    <label *ngIf="policyDoc['document_'+i+'_name']"
+                                        class="custom-file-label form-control d-flex justify-content-between align-items-center"
+                                        for="{{'customFile'+i}}"><span class="text-truncate">{{policyDoc['document_'+i+'_name']}}</span>
+                                        <span><button (click)="removeDocFile(i,'previousYearPolicyCopy')"
+                                                class="btn font-sm link-btn">REMOVE</button></span>
+                                    </label>
+                                    <span class="docFormat-span">File Format: JPG, PDF, PNG | Max Size:
+                                        5mb</span>
+                                        <span class="d-inline-block error-msg position-relative mt-0">
+                                            Required *
+                                         </span>
+                                </div>
+                            </div>
+                            <div class="form-field col-md-6 col-lg-6 col-xl-7 mb-4 mt-2">
+                                <div class="head-sm">REMARKS</div>
+                                <input type="text" class="form-control"
+                                    placeholder="Lorem-Ipsum-Dolor-Sit-Amet,Et-Mea-Quem-Unum-ludico">
+                            </div>
+                        </div>
+                        <div class="pl-5 mb-4 w-100 mt-3">
+                            <button type="button" (click)="addDocumentFileBtn('previousYearPolicyCopy')"
+                                class="link-btn p-0 link-btn-fr-pr">+ ADD ANOTHER FILE</button>
+                        </div>
+                    </div>
+                    <div class="row border-as-bottom mt-3">
+                        <div class="w-100" *ngFor="let rcDoc of documentForm.value.rcCopy; index as i">
+                            <div *ngIf="i>0" class="fw-100 pt-2 border-as-top mt-4">
+                                <button (click)="removeFileFromArr(i,'rcCopy')" class="btn quotelist-btn pull-right m-0">
+                                    <svg class="svg-xxs">
+                                        <use xlink:href="#ICON_Cross" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="form-field col-md-6 col-lg-4 col-xl-3 mb-4 mt-2 upload-documents-form-field" [ngClass]="{'mt-4': i>0}">
+                                <div class="head-sm">RC COPY</div>
+                                <div class="custom-file">
+                                    <input type="file" accept="image/jpeg,image/png,application/pdf"
+                                        (change)="onFileChange($event,'rcCopy',i)" class="custom-file-input"
+                                        id="{{'customFileRc'+i}}">
+                                    <label *ngIf="!rcDoc['document_'+i+'_name']" class="custom-file-label form-control"
+                                        for="{{'customFileRc'+i}}"><svg class="icon-uploadFile m-r-sm">
+                                            <use xlink:href="#ICON_FileUpload" /></svg>Upload file</label>
+                                    <label *ngIf="rcDoc['document_'+i+'_name']"
+                                        class="custom-file-label form-control d-flex justify-content-between align-items-center"
+                                        for="{{'customFileRc'+i}}"><span class="text-truncate">{{rcDoc['document_'+i+'_name']}}</span>
+                                        <span><button (click)="removeDocFile(i,'rcCopy')"
+                                                class="btn font-sm link-btn">REMOVE</button></span>
+                                    </label>
+                                    <span class="docFormat-span">File Format: JPG, PDF, PNG | Max Size:
+                                        5mb</span>
+                                        <span class="d-inline-block error-msg position-relative mt-0">
+                                            Required *
+                                         </span>
+                                </div>
+                            </div>
+                            <div class="form-field col-md-6 col-lg-6 col-xl-7 mb-4 mt-2">
+                                <div class="head-sm">REMARKS</div>
+                                <input type="text" class="form-control"
+                                    placeholder="Lorem-Ipsum-Dolor-Sit-Amet,Et-Mea-Quem-Unum-ludico">
+                            </div>
+                        </div>
+                        <div class="pl-5 mb-4 w-100 mt-3">
+                            <button type="button" (click)="addDocumentFileBtn('rcCopy')" class="link-btn  p-0 link-btn-fr-pr">+
+                                ADD
+                                ANOTHER FILE</button>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="w-100" *ngFor="let form2930Doc of documentForm.value.form2930; index as i">
+                            <!-- <div class="border-as-top"></div> -->
+                            <div *ngIf="i>0" class="fw-100 pt-2 border-as-top mt-4">
+                                <button (click)="removeFileFromArr(i,'form2930')" class="btn quotelist-btn pull-right m-0">
+                                    <svg class="svg-xxs">
+                                        <use xlink:href="#ICON_Cross" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="form-field col-md-6 col-lg-4 col-xl-3 mb-4 mt-2 upload-documents-form-field" [ngClass]="{'mt-4': i>0}">
+                                <div class="head-sm">FORM 29/30</div>
+                                <div class="custom-file">
+                                    <input type="file" accept="image/jpeg,image/png,application/pdf"
+                                        (change)="onFileChange($event,'form2930',i)" class="custom-file-input"
+                                        id="{{'customFileForm'+i}}">
+                                    <label *ngIf="!form2930Doc['document_'+i+'_name']"
+                                        class="custom-file-label form-control" for="{{'customFileForm'+i}}"><svg
+                                            class="icon-uploadFile m-r-sm">
+                                            <use xlink:href="#ICON_FileUpload" /></svg>Upload file</label>
+                                    <label *ngIf="form2930Doc['document_'+i+'_name']"
+                                        class="custom-file-label form-control d-flex justify-content-between align-items-center"
+                                        for="{{'customFileForm'+i}}"><span class="text-truncate">{{form2930Doc['document_'+i+'_name']}}</span>
+                                        <span><button (click)="removeDocFile(i,'form2930')"
+                                                class="btn font-sm link-btn">REMOVE</button></span>
+                                    </label>
+                                    <span class="docFormat-span">File Format: JPG, PDF, PNG | Max Size:
+                                        5mb</span>
+                                        <span class="d-inline-block error-msg position-relative mt-0">
+                                            Required *
+                                         </span>
+                                </div>
+                            </div>
+                            <div class="form-field col-md-6 col-lg-6 col-xl-7 mb-4 mt-2">
+                                <div class="head-sm">REMARKS</div>
+                                <input type="text" class="form-control"
+                                    placeholder="Lorem-Ipsum-Dolor-Sit-Amet,Et-Mea-Quem-Unum-ludico">
+                            </div>
+                        </div>
+                        <div class="pl-5 mb-4 w-100 mt-3">
+                            <button type="button" (click)="addDocumentFileBtn('form2930')"
+                                class="link-btn  p-0 link-btn-fr-pr">+
+                                ADD ANOTHER FILE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-block m-t-lg">
+                <button type="button" (click)="route()" class="btn primary-btn theme-lg-btn">Done</button> 
+        </div>
+    </form>
+</div>

@@ -1,0 +1,95 @@
+<div class="theme-container" #target>
+    <div class="page-title">
+        <div (click)="routeBack()" class="nav-btn">
+            <svg>
+                <use xlink:href="#ICON_Arrow" />
+            </svg>
+        </div>
+        <div class="head-lg heading">EXISTING PA POLICY DETAILS</div>
+        <div class="pull-right breadcrum">
+            <span class="head-sm">Application / </span> <span class="head-sm">Existing PA Policy Details</span>
+        </div>
+    </div>
+    <form [formGroup]="policyDetails" class="theme-form mt-mobile">
+        <div *ngFor="let policyDetail of policyDetails.controls; index as i"
+            class="vehicle-details accordion-section theme-card w-100 p-0 mb-4">
+            <div class="card-content pb-1 pt-3">
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-between align-items-center">
+                        <div class="head-sm p-l-20 pull-left col-9">
+                            EXISTING PA POLICY DETAIL {{i+1}}
+                            <span *ngIf="policyDetail.value.policyNumber && policyDetail.value.showPolicyHeadSm">-
+                                <span class="primary-dark-text">{{policyDetail.value.policyNumber}}</span> </span>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" (click)="deletePolicyDetails(i)"
+                                class="link-btn mr-4">Delete</button>
+                            <button *ngIf="!policyDetail.value.cardCollapsed" (click)="cardCollapsed(i)"
+                                class="btn quotelist-btn" data-toggle="collapse" [attr.href]="'#collapse-collapsed'+i"
+                                aria-expanded="true" id="{{'heading-collapsed' + i}}">
+                                <svg class="svg-up-arrow">
+                                    <use xlink:href="#ICON_Arrow" />
+                                </svg>
+                            </button>
+                            <button *ngIf="policyDetail.value.cardCollapsed" (click)="cardCollapsed(i)"
+                                class="btn quotelist-btn" data-toggle="collapse" [attr.href]="'#collapse-collapsed'+i"
+                                aria-expanded="true" id="{{'heading-collapsed' + i}}">
+                                <svg class="svg-down-arrow">
+                                    <use xlink:href="#ICON_Arrow" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="{{'collapse-collapsed'+i}}" class="collapse show mt-2" aria-labelledby="heading-collapsed">
+                    <div [formGroupName]="i" class="row">
+                        <div [ngClass]="{'complete': policyDetail.value.policyNumber}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">POLICY NUMBER</div>
+                            <input type="text" formControlName="policyNumber" class="form-control"
+                                name="{{'policyNumber'+i}}" id="{{'policyNumber'+i}}" autocomplete="off">
+                            <span class="error-msg policy-errMsg btm-0-xl">
+                                    Required *
+                                 </span>
+                        </div>
+                        <div [ngClass]="{'complete': policyDetail.value.insurer}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">INSURER</div>
+                            <ng-select formControlName="insurer" [items]="insurerArray" placeholder="Select"
+                                class="ngSelectOption 1">
+                            </ng-select>
+                            <span class="error-msg policy-errMsg">
+                                Required *
+                             </span>
+                        </div>
+                        <div [ngClass]="{'complete': policyDetail.value.capitalSumInsured}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">CAPITAL SUM INSURED</div>
+                            <input type="text" (keypress)="isNumberKey($event)" formControlName="capitalSumInsured"
+                                class="form-control" name="{{'capitalSumInsured'+i}}" id="{{'capitalSumInsured'+i}}"
+                                autocomplete="off">
+                            <span *ngIf="sumInsuredError"
+                                class="error-msg sumInsured-error">
+                                Total CPA cover can not be less than 15 Lacs. Please Either update Sum Insured For
+                                Current Proposal or Update Capital Sum Insured For Existing Policies.
+                            </span>
+                            <!-- <span class="error-msg policy-errMsg">
+                                    Required *
+                                 </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="button" (click)="addPolicyDetails()"
+                    class="btn add-vehicle-btn primary-btn theme-lg-btn">+ Add
+                    New Policy</button>
+            </div>
+        </div>
+        <div class="btn-block m-t-lg">
+            <button type="button" (click)="save()" class="btn primary-btn theme-lg-btn">Next</button>
+        </div>
+    </form>
+</div>

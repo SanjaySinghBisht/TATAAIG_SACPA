@@ -1,0 +1,109 @@
+<div class="theme-container" #target>
+    <div class="page-title">
+        <div class="nav-btn">
+            <svg>
+                <use xlink:href="#ICON_Arrow" />
+            </svg>
+        </div>
+        <div class="head-lg heading">PLAN DETAILS</div>
+        <div class="pull-right breadcrum">
+            <span class="head-sm">Application / </span> <span class="head-sm">Plan Details</span>
+        </div>
+    </div>
+    <form [formGroup]="planDetailsForm" class="theme-form mt-mobile">
+        <div class="row">
+            <div [ngClass]="{'complete': planDetailsForm.value.businessType}" class="form-field col-md-6 col-lg-4">
+                <div class="head-sm ">
+                    SELECT BUSINESS TYPE<span class="text-red">*</span>
+                </div>
+                <div class="form-group theme-radio radio-btn premium-radio-btn theme-radio-btn-w">
+                    <input type="radio" id="newBusiness" formControlName="businessType" name="businessType" value="New Business">
+                    <label for="newBusiness"><span>New Business</span></label>
+                </div>
+                <div class="form-group theme-radio radio-btn theme-radio-btn-w">
+                    <input type="radio" id="rollOver" formControlName="businessType" name="businessType" value="Roll Over" (change)="businessTypeSelected()">
+                    <label for="rollOver"><span>Roll Over</span></label>
+                </div>
+                <span class="error-msg d-block m-md-n2 btm-n15-xl">
+                    Required *
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngIf="planDetailsForm.value.businessType == 'Roll Over'" [ngClass]="{'complete': planDetailsForm.value.previousPolicyEndDate}" class="form-field col-md-6 col-lg-4 col-xl-3">
+                <div class="head-sm ">
+                    PREVIOUS POLICY END DATE<span class="text-red">*</span>
+                </div>
+                <input #policyEndDate formControlName="previousPolicyEndDate" (keyup.enter)="formatLikeExcel('endDate')"
+                    (focusout)="formatLikeExcel('endDate')" (keypress)="isNumberKey($event)" type="text" class="form-control date"
+                    mask="00/00/00" placeholder="DD /MM /YYYY" autocomplete="off">
+                    <span class="error-msg">
+                      Required *
+                  </span>
+              </div>
+            <div [ngClass]="{'complete': planDetailsForm.value.policyStartDate}" class="form-field col-md-6 col-lg-4 col-xl-3">
+              <div class="head-sm ">
+                  POLICY START DATE<span class="text-red">*</span>
+              </div>
+              <input #policyStartDate formControlName="policyStartDate" (keyup.enter)="formatLikeExcel('startDate')"
+                  (focusout)="formatLikeExcel('startDate')" (keypress)="isNumberKey($event)" type="text" class="form-control date"
+                  mask="00/00/00" placeholder="DD /MM /YYYY" autocomplete="off">
+                  <span class="error-msg">
+                    Required *
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-field col-12 col-md-6 col-lg-12">
+                <div class="head-sm text">
+                    Have you taken any personal accident policy already?
+                </div>
+                <div class="form-group theme-radio radio-btn premium-radio-btn theme-radio-btn-w">
+                    <input type="radio" id="yes" formControlName="personalAccidentPolicyRes" name="personalAccidentPolicyRes" value="Yes">
+                    <label for="yes"><span>Yes</span></label>
+                </div>
+                <div class="form-group theme-radio radio-btn theme-radio-btn-w">
+                    <input type="radio" id="no" formControlName="personalAccidentPolicyRes" name="personalAccidentPolicyRes" value="No">
+                    <label for="no"><span>No</span></label>
+                </div>
+                <!-- <span class="error-msg d-block m-md-n2">
+                    Required *
+                </span> -->
+            </div>
+            <div *ngIf="planDetailsForm.value.personalAccidentPolicyRes == 'Yes'" class="col-lg-12 d-flex mb-4">
+                <div class="col-lg-2 check-default">
+                    <input type="radio" class="checkbox" id="tataaig" formControlName="personalAccidentPolicyType" value="Tata AIG GIC" name="personalAccidentPolicyType">
+                    <label for="tataaig">Tata AIG GIC</label>
+                 </div>
+                 <div class="col-lg-2 check-default">
+                    <input type="radio" class="checkbox" id="others" formControlName="personalAccidentPolicyType" value="Others" name="personalAccidentPolicyType">
+                    <label for="others">Others</label>
+                 </div>
+            </div>
+            <!-- <div *ngIf="planDetailsForm.value.personalAccidentPolicyType == 'Others'" [ngClass]="{'complete': planDetailsForm.value.policyProviderName}" class="form-field col-lg-4">
+                <div class="head-sm">OTHERS (Please Specify Name)*</div>
+                <input type="text" class="form-control" formControlName="policyProviderName" id="policyProviderName" placeholder="Enter" autocomplete="off">
+            </div> -->
+        </div>
+        <!-- <div class="row col-lg-12">
+            <div class="check-default mb-4">
+                <input type="checkbox" formControlName="driverCover" class="checkbox" id="drivercover">
+                <label for="drivercover">Personal Accident Owner Driver Cover</label>
+             </div>
+        </div> -->
+        <div class="row">
+            <div [ngClass]="{'complete': planDetailsForm.value.sumInsured}" class="form-field col-md-6 col-lg-4 col-xl-3">
+                <div class="head-sm ">SUM INSURED<span class="text-red">*</span></div>
+                <ng-select formControlName="sumInsured" [items]="sumInsuredArray" placeholder="Select"
+                class="ngSelectOption 1">
+             </ng-select>
+             <span class="error-msg">
+                Required *
+             </span>
+            </div>
+        </div>
+        <div class="btn-block m-t-lg">
+            <button type="button" (click)="route()" class="btn primary-btn theme-lg-btn">Proceed</button>
+        </div>
+    </form>
+</div>

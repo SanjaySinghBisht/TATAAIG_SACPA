@@ -1,0 +1,184 @@
+<div class="theme-container" #target>
+    <div class="page-title">
+        <div (click)="routeBack()" class="nav-btn">
+            <svg>
+                <use xlink:href="#ICON_Arrow" />
+            </svg>
+        </div>
+        <div class="head-lg heading">VEHICLE DETAILS</div>
+        <div class="pull-right breadcrum">
+            <span class="head-sm">Application / </span> <span class="head-sm">Vehicle Details</span>
+        </div>
+    </div>
+    <form [formGroup]="vehicleDetails" class="theme-form mt-mobile">
+        <div *ngFor="let vehicleDetail of vehicleDetails.controls; index as i"
+            class="vehicle-details accordion-section theme-card w-100 p-0 mb-4">
+            <div class="card-content pb-1 pt-3">
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-between align-items-baseline">
+                        <div *ngIf="!vehicleDetail.value.changeHeadSm" class="head-sm p-l-20 pull-left">VEHICLE DETAIL
+                            {{i+1}}</div>
+                        <div *ngIf="vehicleDetail.value['vehicle'+i+'Status']  == 'Yes' && vehicleDetail.value.changeHeadSm"
+                            class="head-sm p-l-20 pull-left">NEW VEHICLE DETAIL {{i+1}} -
+                            <span class="primary-dark-text">NEW</span>
+                        </div>
+                        <div *ngIf="vehicleDetail.value['vehicle'+i+'Status']  == 'No' && vehicleDetail.value.changeHeadSm"
+                            class="head-sm p-l-20 pull-left">VEHICLE REGISTRATION NUMBER -
+                            <span class="primary-dark-text">{{vehicleDetail.value.fullRegistrationNumber}}</span>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" (click)="deleteVehicle(i)"
+                                class="link-btn mr-4">Delete</button>
+                            <button *ngIf="!vehicleDetail.value.cardCollapsed" (click)="cardCollapsed(i)"
+                                class="btn quotelist-btn" data-toggle="collapse" [attr.href]="'#collapse-collapsed'+i"
+                                aria-expanded="true" id="{{'heading-collapsed' + i}}">
+                                <svg class="svg-up-arrow">
+                                    <use xlink:href="#ICON_Arrow" />
+                                </svg>
+                            </button>
+                            <button *ngIf="vehicleDetail.value.cardCollapsed" (click)="cardCollapsed(i)"
+                                class="btn quotelist-btn" data-toggle="collapse" [attr.href]="'#collapse-collapsed'+i"
+                                aria-expanded="true" id="{{'heading-collapsed' + i}}">
+                                <svg class="svg-down-arrow">
+                                    <use xlink:href="#ICON_Arrow" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="{{'collapse-collapsed'+i}}" class="collapse show mt-2" aria-labelledby="heading-collapsed">
+                    <div [formGroupName]="i" class="row">
+                        <div class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">Is your vehicle new?<span class="text-red">*</span></div>
+                            <div class="form-group theme-radio radio-btn premium-radio-btn theme-radio-width">
+                                <input type="radio" id="{{'yes'+i}}" formControlName="{{'vehicle'+i+'Status'}}"
+                                    name="{{'vehicle'+i+'Status'}}" value="Yes">
+                                <label for="{{'yes'+i}}"><span>Yes</span></label>
+                            </div>
+                            <div class="form-group theme-radio radio-btn theme-radio-width">
+                                <input type="radio" id="{{'no'+i}}" formControlName="{{'vehicle'+i+'Status'}}"
+                                    name="{{'vehicle'+i+'Status'}}" value="No">
+                                <label for="{{'no'+i}}"><span>No</span></label>
+                            </div>
+                            <span class="error-msg d-block m-md-n2">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': vehicleDetail.value.regNumber1}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">
+                                VEHICLE REGISTRATION NUMBER<span class="text-red">*</span>
+                            </div>
+                            <div *ngIf="!mobileView" class="row">
+                                <div class="col-md-3 col-lg-3 col-3">
+                                    <input #regNumber1
+                                        [placeholder]="vehicleDetail.value['vehicle'+i+'Status']  == 'Yes'? 'NEW' : ''"
+                                        type="text" formControlName="regNumber1" id="{{'regNumber1_'+i}}"
+                                        class="form-control text-center form-control-small" maxlength="2"
+                                        name="{{'regNumber1_'+i}}"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        (keyup)="onInputEntry($event, regNumber2,regNumber1,2)" autocomplete="off">
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-3 pl-0">
+                                    <input #regNumber2 type="text" formControlName="regNumber2" id="{{'regNumber2_'+i}}"
+                                        class="form-control text-center form-control-small" maxlength="2"
+                                        name="{{'regNumber2_'+i}}"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        (keyup)="onInputEntry($event, regNumber3,regNumber2,2)" autocomplete="off">
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-3 pl-0">
+                                    <input #regNumber3 type="text" formControlName="regNumber3"
+                                        class="form-control text-center form-control-small" maxlength="2"
+                                        name="{{'regNumber3_'+i}}" id="{{'regNumber3_'+i}}"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        (keyup)="onInputEntry($event, regNumber4,regNumber3,2)" autocomplete="off">
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-3 pl-0">
+                                    <input #regNumber4 type="text" formControlName="regNumber4"
+                                        class="form-control text-center form-control-small" maxlength="4"
+                                        name="{{'regNumber4_'+i}}" id="{{'regNumber4_'+i}}"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        (focusout)="mergeRegistrationNumber(i)" autocomplete="off">
+                                </div>
+                            </div>
+                            <div *ngIf="mobileView">
+                                <input type="text" class="form-control" formControlName="fullRegistrationNumber" name="registrationNumber" id="registrationNumber" autocomplete="off">
+                            </div>
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': vehicleDetail.value.type}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">
+                                VEHICLE TYPE<span class="text-red">*</span>
+                            </div>
+                            <ng-select [items]="vehicleTypeArray" formControlName="type" placeholder="Select"
+                                class="ngSelectOption 1">
+                            </ng-select>
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': vehicleDetail.value.make}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">MAKE<span class="text-red">*</span></div>
+                            <ng-select [items]="vehicleMakeArray" [searchable]="true" formControlName="make"
+                                placeholder="Enter" class="ngSelectOption 1" autocomplete="off">
+                            </ng-select>
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': vehicleDetail.value.model}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">MODEL<span class="text-red">*</span></div>
+                            <ng-select [items]="vehicleMakeArray" [searchable]="true" formControlName="model"
+                                placeholder="Enter Model" class="ngSelectOption 1" autocomplete="off">
+                            </ng-select>
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': vehicleDetail.value.manufacturingYear}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">YEAR OF MANUFACTURING<span class="text-red">*</span></div>
+                            <input type="text" formControlName="manufacturingYear" class="form-control"
+                                name="{{'manufacturingYear'+i}}" id="{{'manufacturingYear'+i}}" autocomplete="off">
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': vehicleDetail.value.engineNumber}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">ENGINE NUMBER<span class="text-red">*</span></div>
+                            <input type="text" formControlName="engineNumber" class="form-control"
+                                name="{{'engineNumber'+i}}" id="{{'engineNumber'+i}}" autocomplete="off">
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': vehicleDetail.value.chassisNumber}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm">CHASSIS NUMBER<span class="text-red">*</span></div>
+                            <input type="text" formControlName="chassisNumber" class="form-control"
+                                name="{{'chassisNumber'+i}}" id="{{'chassisNumber'+i}}" autocomplete="off">
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="button" (click)="addVehicle()" class="btn add-vehicle-btn primary-btn theme-lg-btn">+ Add
+                    Vehicle</button>
+            </div>
+        </div>
+        <div class="btn-block m-t-lg">
+            <button type="button" (click)="save()" class="btn primary-btn theme-lg-btn">Next</button>
+        </div>
+    </form>
+</div>

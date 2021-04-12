@@ -1,0 +1,338 @@
+<div class="theme-container" #target>
+    <div class="page-title">
+        <div (click)="routeBack()" class="nav-btn">
+            <svg>
+                <use xlink:href="#ICON_Arrow" />
+            </svg>
+        </div>
+        <div class="head-lg heading">CUSTOMER DETAILS</div>
+        <div class="pull-right breadcrum">
+            <span class="head-sm">Application / </span> <span class="head-sm">Customer Details</span>
+        </div>
+    </div>
+    <form [formGroup]="customerDetailsForm" class="theme-form mt-mobile">
+        <div class="customer-detail theme-card w-100 p-0">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="head-sm p-l-20">INSURED DETAILS <span class="color-asqi px-2 customer-ws"> Customer
+                                Type:</span>
+                            <span class=" head-sm">
+                                Individual
+                            </span> </div>
+                    </div>
+                </div>
+                <div class="row mt-2 border-as-bottom">
+                    <div [ngClass]="{'complete': customerDetailsForm.value.salutation}"
+                        class="form-field col-lg-2 col-md-4">
+                        <div for="usr" class="head-sm">SALUTATION<span class="text-red">*</span></div>
+                        <ng-select formControlName="salutation" [items]="salutationArray" placeholder="Select"
+                            class="ngSelectOption 1">
+                        </ng-select>
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.firstName}"
+                        class="form-field col-lg-4 col-md-4">
+                        <div class="head-sm">FIRST NAME<span class="text-red">*</span></div>
+                        <input type="text" formControlName="firstName" (keypress)="formatName($event)"
+                            class="form-control" id="fname" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                        <!--<span class="error-msg">
+                            Invalid Name
+                         </span> -->
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.middleName}"
+                        class="form-field col-lg-3 col-md-4">
+                        <div class="head-sm">MIDDLE NAME</div>
+                        <input type="text" formControlName="middleName" (keypress)="formatName($event)"
+                            class="form-control" id="mname" autocomplete="off">
+                        <span class="error-msg">
+                            Invalid Name
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.lastName}"
+                        class="form-field col-lg-3 col-md-6">
+                        <div class="head-sm">LAST NAME<span class="text-red">*</span></div>
+                        <input type="text" formControlName="lastName" (keypress)="formatName($event)"
+                            class="form-control" id="lname" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                        <!--<span class="error-msg">
+                            Invalid Name
+                         </span> -->
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.customerDob}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm">DATE OF BIRTH<span class="text-red">*</span></div>
+                        <input #customerDob formControlName="customerDob" type="text"
+                            (keyup.enter)="formatLikeExcel('customer')" (focusout)="formatLikeExcel('customer')"
+                            (keypress)="isNumberKey($event)" class="form-control" placeholder="DD/MM/YYYY"
+                            autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                        <!--     <span class="error-msg">
+                                Invalid Date
+                             </span> -->
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.gender}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm">GENDER<span class="text-red">*</span></div>
+                        <div class="form-group theme-radio radio-btn  ">
+                            <input type="radio" id="male" formControlName="gender" value="Male" name="gender">
+                            <label for="male"><span>Male</span></label>
+                        </div>
+                        <div class="form-group theme-radio radio-btn  ">
+                            <input type="radio" id="female" formControlName="gender" value="Female" name="gender">
+                            <label for="female"><span>Female</span></label>
+                        </div>
+                        <div class="form-group theme-radio radio-btn  ">
+                            <input type="radio" id="other" formControlName="gender" value="Others" name="gender">
+                            <label for="other"><span>Others</span></label>
+                        </div>
+                        <span class="error-msg d-block m-md-n2">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.maritalStatus}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm">MARITAL STATUS<span class="text-red">*</span></div>
+                        <ng-select formControlName="maritalStatus" [items]="maritalStatusArray" placeholder="Select"
+                            class="ngSelectOption 1">
+                        </ng-select>
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.occupation}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm">
+                            OCCUPATION<span class="text-red">*</span>
+                        </div>
+                        <ng-select formControlName="occupation" [items]="occupationArray" placeholder="Select"
+                            class="ngSelectOption 1">
+                        </ng-select>
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.panNumber}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm">PAN NUMBER</div>
+                        <input type="text" formControlName="panNumber" class="form-control text-uppercase" name="panNumber"
+                            id="panNumber" autocomplete="off">
+                        <!-- <span class="error-msg">
+                            Required *
+                         </span> -->
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.gstin}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm">GSTIN</div>
+                        <input type="text" formControlName="gstin" class="form-control text-uppercase" name="gstin" id="gstin"
+                            autocomplete="off">
+                        <!-- <span class="error-msg">
+                            Required *
+                         </span> -->
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="head-sm p-l-20">CONTACT DETAILS</div>
+                    </div>
+                </div>
+                <div class="row border-as-bottom">
+                    <div [ngClass]="{'complete': customerDetailsForm.value.email}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm">EMAIL</div>
+                        <input type="email" formControlName="email" (keypress)="formatEmail($event)"
+                            class="form-control" name="email" id="email" autocomplete="off">
+                        <span class="error-msg">
+                            Invalid Email
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.mobile}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">MOBILE NUMBER</div>
+                        <input type="text" formControlName="mobile" (keypress)="isNumberKey($event)" minlength="10"
+                            maxlength="10" class="form-control" name="mobile" id="mobile" autocomplete="off">
+                        <span class="error-msg">
+                            Invalid Mobile Number
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.pinCode}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">PIN CODE<span class="text-red">*</span></div>
+                        <input type="text" formControlName="pinCode" (keypress)="isNumberKey($event)"
+                            class="form-control" name="pinCode" id="pinCode" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.addressLine1}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">ADDRESS LINE 1<span class="text-red">*</span></div>
+                        <input type="text" formControlName="addressLine1" class="form-control" name="addressLine1"
+                            id="addressLine1" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.addressLine2}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">ADDRESS LINE 2<span class="text-red">*</span></div>
+                        <input type="text" formControlName="addressLine2" class="form-control" name="addressLine2"
+                            id="addressLine2" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.addressLine3}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">ADDRESS LINE 3<span class="text-red">*</span></div>
+                        <input type="text" formControlName="addressLine3" class="form-control" name="" id="addressLine3"
+                            autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.city}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">CITY<span class="text-red">*</span></div>
+                        <input type="text" formControlName="city" (keypress)="formatName($event)" class="form-control"
+                            name="" id="city" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.state}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">STATE<span class="text-red">*</span></div>
+                        <input type="text" formControlName="state" (keypress)="formatName($event)" class="form-control"
+                            name="" id="state" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="head-sm p-l-20">NOMINEE DETAILS</div>
+                    </div>
+                </div>
+                <div class="row col-lg-12 pl-4 checkbox-pl-3 ">
+                    <div class="check-default mb-4">
+                        <input type="checkbox" class="checkbox" id="nomineeInsuredAddress">
+                        <label for="nomineeInsuredAddress">Nominee Address same sas Insured Address</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div [ngClass]="{'complete': customerDetailsForm.value.nomineeName}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">NAME OF THE NOMINEE<span class="text-red">*</span></div>
+                        <input type="text" formControlName="nomineeName" (keypress)="formatName($event)"
+                            class="form-control" name="nomineeName" id="nomineeName" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.nomineeDob}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">DATE OF BIRTH<span class="text-red">*</span></div>
+                        <input #nomineeDob formControlName="nomineeDob" type="text"
+                            (keyup.enter)="formatLikeExcel('nominee')" (focusout)="formatLikeExcel('nominee')"
+                            (keypress)="isNumberKey($event)" class="form-control" placeholder="DD/MM/YYYY"
+                            autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.nomineeRelationship}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">RELATIONSHIP<span class="text-red">*</span></div>
+                        <ng-select formControlName="nomineeRelationship" [items]="relationshipArray"
+                            placeholder="Select" class="ngSelectOption 1">
+                        </ng-select>
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                    <div [ngClass]="{'complete': customerDetailsForm.value.nomineeAddress}"
+                        class="form-field col-md-6 col-lg-4 col-xl-3">
+                        <div class="head-sm ">ADDRESS OF NOMINEE<span class="text-red">*</span></div>
+                        <input type="text" formControlName="nomineeAddress" class="form-control" name="nomineeAddress"
+                            id="nomineeAddress" autocomplete="off">
+                        <span class="error-msg">
+                            Required *
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="displayAppointeeFlag">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="head-sm p-l-20">ENTER APPOINTEE DETAILS
+                                <div class="font-sm color-asqi">Since The Nominee is A Minor. Please Enter Appointee
+                                    Details</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-lg-12 mt-2 pl-4 checkbox-pl-3">
+                        <div class="check-default mb-4">
+                            <input type="checkbox" class="checkbox" id="appointeeInsuredAddress">
+                            <label for="appointeeInsuredAddress">Appointee Address same sas Insured Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div [ngClass]="{'complete': customerDetailsForm.value.appointeeName}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm ">NAME OF APPOINTEE</div>
+                            <input type="text" formControlName="appointeeName" (keypress)="formatName($event)"
+                                class="form-control" name="appointeeName" id="appointeeName" autocomplete="off">
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': customerDetailsForm.value.appointeeDob}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm ">DATE OF BIRTH</div>
+                            <input #appointeeDob formControlName="appointeeDob" type="text"
+                                (keyup.enter)="formatLikeExcel('appointee')" (focusout)="formatLikeExcel('appointee')"
+                                (keypress)="isNumberKey($event)" class="form-control" placeholder="DD/MM/YYYY"
+                                autocomplete="off">
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': customerDetailsForm.value.appointeeRelationship}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm ">RELATIONSHIP</div>
+                            <ng-select formControlName="appointeeRelationship" [items]="relationshipArray"
+                                placeholder="Select" class="ngSelectOption 1">
+                            </ng-select>
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+                        <div [ngClass]="{'complete': customerDetailsForm.value.appointeeAddress}"
+                            class="form-field col-md-6 col-lg-4 col-xl-3">
+                            <div class="head-sm ">ADDRESS OF APPOINTEE</div>
+                            <input type="text" formControlName="appointeeAddress" class="form-control"
+                                name="appointeeAddress" id="appointeeAddress" autocomplete="off">
+                            <span class="error-msg">
+                                Required *
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-block m-t-lg">
+            <button type="button" (click)="route()" class="btn primary-btn theme-lg-btn">Next</button>
+        </div>
+    </form>
+</div>

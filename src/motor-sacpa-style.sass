@@ -1,0 +1,673 @@
+@import "sass/variable"
+@import "sass/mixins"
+@import "sass/fonts"
+@import "sass/placeholder"
+@import "@ng-select/ng-select/themes/default.theme.css"
+
+.text
+ padding:0px !important
+.customer-ws
+    line-height:40px
+    white-space: pre
+    padding-left: 0px !important
+.has-form .field-four 
+    .form-field:nth-child(even),.form-field:nth-child(odd) 
+        padding-left: 0 !important
+        padding-right: 15px !important
+.theme-radio.radio-btn, .theme-check.check-btn
+    //min-width: 246px !important
+.modal-dialog
+    &.theme-modal
+       // min-width: 480px
+.nav-btn
+    +border-radius(50px)
+    +square(60px)
+    svg
+        +square(30px)
+.bg-icon  
+    svg
+        height: 16px
+.form-head
+    font-size: 18px
+.theme-label
+    +font_style(18px, #071E54, $pop-med, 0.5) 
+.theme-label-small
+    +font_style(15px, #337ab7, $pop-reg, 1) 
+.theme-value
+    +font_style(18px, $clr-primary, $pop-semi, 1) 
+.theme-value-small
+    +font_style(12px, $clr-primary, $pop-reg, 1) 
+.theme-value-bold
+    +font_style(18px, $clr-primary, $pop-semi, 1) 
+.page-title .heading
+    margin-top: 5px !important
+.error-msg,.label-indent
+    //padding-left: 30px !important
+.detail-container-modal.premium-breakup-details
+    max-width: 700px !important
+    .modal-header
+        padding-bottom: 13px
+    .modal-body
+        padding-top: 13px
+    table
+        tr
+            td:first-child
+                +font_style(18px,$clr-secondary, $pop-med, 0.5) 
+            td:last-child
+                +font_style(18px,$clr-primary, $pop-semi, 1) 
+.head-md
+  +font_style(18px, $clr-primary, $pop-med ,1)
+
+.uw-error-msg 
+    color: $err !important
+    font-size: 18px !important
+    float: left
+    width: 100%
+    margin-top: 5px
+    word-break: break-word
+
+.review-proposal label
+    margin-bottom: 0.2em
+.review-proposal span.theme-value
+    display: block
+
+.coverage-breakup td.fixed-width
+    width: 60%
+
+@media screen and ( max-width:1600px)
+    .theme-form .field-four .form-field
+        width: 25% !important
+    .review-details .theme-label, .review-details .theme-value
+        //padding-left: 30px !important
+    .page-title .heading
+        margin-top: 3px	!important
+    .page-title .nav-btn svg  
+        height: 15px !important
+        width: 15px !important
+    .page-title .nav-btn 
+        height: 30px !important
+        width: 30px !important
+    .head-sm, .modal-body .head-sm
+        +font_style(14px, $clr-secondary, $pop-med, 1)
+@media (max-width: 1600px)
+    .btn.primary-btn, .normal-btn, .proceed-width, .theme-modal .double-btn .secondary-btn, .theme-modal .modal-content .contact-details .secondary-btn, .theme-modal .secondary-btn
+        min-width: 200px
+        padding: 15px
+        height: 50px
+@media screen and ( min-width:1600px  )
+    .btn.primary-btn,.primary-btn.active, .primary-btn:active, .primary-btn:hover, .primary-btn:focus, .primary-btn[disabled]
+       //min-width: 417px !important
+        //height: 70px
+    .btn.theme-label-small,.theme-value-small
+        font-size: 16px !important
+    .head-sm, .modal-body .head-sm
+        +font_style(18px, $clr-secondary, $pop-med, 1)
+
+
+@media screen and ( max-width:1400px)
+    .theme-label,.theme-value
+        font-size: 14px
+    .form-head
+        font-size: 14px
+    .head-sm
+        font-size: 14px
+    .detail-container-modal.premium-breakup-details
+        max-width: 500px !important
+        .modal-header
+            padding-left: 30px 
+            padding-right: 30px 
+        table
+            tr
+                td:first-child
+                    +font_style(14px,$clr-secondary, $pop-med, 0.5) 
+                td:last-child
+                    +font_style(14px,$clr-primary, $pop-semi, 1) 
+
+.opt-cov .has-form .form-field:nth-child(even)
+    padding-left: 0 !important
+.optional-covers.theme-modal .modal-content .theme-form .field-two .form-field
+    padding-left: 0 !important
+    padding-right: 25px
+.risk-details-pop.theme-modal .modal-content .theme-form .form-field:nth-child(even)
+    padding-left: 47px !important
+.error-msg
+    //position: relative
+@media (max-width: 768px)
+    .review-proposal .md-2
+        margin: 0
+    .review-proposal .row div[class*="col"] label,
+    .review-proposal .row div[class*="col"] span
+        width: 50%
+        display: inline-flex
+        word-break: break-all
+        align-items: baseline
+    .error-msg
+        //bottom:0
+    .add_risk .has-form .form-field
+        width:50% !important
+    .theme-addoncover .error-msg
+        padding-right: 0 !important
+        margin-left: -100px !important
+        position: absolute
+        //margin-left: 0 !important
+    .theme-addoncover .table-margin .error-msg
+        margin-left: -80px !important
+.label-indent
+    padding-left: calc(var(--fldgap)/2 + 30px) !important
+
+@media screen and ( max-width:1600px)
+    .label-indent
+        padding-left: calc(var(--fldgapL)/2 + 30px) !important
+
+@media screen and (max-width: 1024px) and (min-width: 768px)
+    .label-indent
+        padding-left: calc(var(--fldgapT)/2 + 30px) !important
+    .theme-addoncover .error-msg
+        margin-left: -13px !important 
+@media screen and (max-width: 768px) and (min-width: 320px)
+    .label-indent
+        padding-left: calc(var(--fldgapM)/2 + 15px) !important
+:root
+ --fldgap: 29px
+ --fldgapL: 16px
+ --fldgapT: 35px
+ --fldgapM: 20px
+
+ @media (max-width: 1600px)
+    .check-default label:before
+        //height: 30px
+        //width: 30px
+    .check-default label:after
+        //height: 22px
+        //width: 22px
+    .check-default
+        //font-size: 13px
+        //padding: 0 0 5px 45px
+    .add_risk .has-form .form-field:nth-child(even) 
+        padding-left: 45px !important
+    .premium-card-container .custom-radio-top label.premium-lbl:before
+        height: 30px
+        width: 30px
+    .premium-card-container .custom-radio-top label.premium-lbl:after
+        height: 22px
+        width: 22px
+ @media (min-width: 1600px)
+    .check-default label:before
+        //height: 36px
+        //width: 36px
+    .check-default label:after
+        //height: 23px
+        //width: 23px
+    .premium-card-container .custom-radio-top label.premium-lbl:before
+        height: 36px
+        width: 36px
+        top: -22px !important
+    .premium-card-container .custom-radio-top label.premium-lbl:after
+        height: 29px
+        width: 29px
+        top: -18px !important
+    .check-default
+        //font-size: 16px
+        //padding: 0 0 5px 45px
+    .add_risk .has-form .form-field:nth-child(even) 
+         padding-left: 73px !important
+    .premium-card-container.opt-cov .head-sm
+        font-size: 15px !important
+
+.add_risk .has-form .form-field:nth-child(odd) 
+    padding-right: 0 !important
+.add_risk .has-form .form-field
+    min-height: 50px
+.sub-head-sm
+  opacity: 1
+  padding-left: 30px
+  margin-bottom: 15px
+
+.error-msg
+    padding-left: 20px!important
+@media (max-width: 400px)
+    .add_risk .has-form .form-field
+        width:100% !important
+    .theme-addoncover .error-msg
+        margin-left: -120px !important
+
+.premium-card-container
+  width: 100%
+  float: left
+  
+  label.premium-lbl
+   +square(100%)
+   +border-radius(20px)
+   //box-shadow: $outset
+   background: $dr-color
+	  
+.quotelist-btn 
+    color: $clr-primary
+    opacity: 1
+    background: $btn-pri-bg
+    box-shadow: $outset
+    border-radius: 50%
+    border: none
+    font-size: 12px
+    margin-right: 10px
+    margin-bottom: 10px
+    min-width: 40px
+    padding:10px
+
+.icon-filter
+    height: 45px                                                                                                                                                                                                                        
+    width: 45px
+    position: relative                                                                                                                                                                                                                                                                                                          
+
+.search-icon
+    height: 25px
+    width: 25px
+    position: absolute
+    right: 30px
+    bottom: 34px
+
+.search-btn
+    color: $clr-asqi
+    opacity: 1
+    background: $btn-pri-bg
+    box-shadow: $outset
+    border-radius: 33px
+    border: none
+    font-size: 12px
+    margin-right: 10px
+    margin-bottom: 10px
+    min-width: 40px
+    padding:10px
+
+.search-btn:active, .search-btn:focus, .search-btn:hover, .quotelist-btn:active, .quotelist-btn:focus, .share-btn:active, .share-btn:focus
+    color: $clr-primary
+    box-shadow:$outset
+
+.label-checked 	
+    pointer-events: auto !important
+
+.sort-filter-label
+    height: 100px!important
+    width: 100px!important
+    margin-right: 5px
+    margin-left: 0!important
+
+.brdr-right
+    border-right: 1px dotted rgba(81,96,129,.5)
+
+.premium-card-container label.premium-lbl 
+    height: 100%
+    width: 100%
+    border-radius: 20px
+    -webkit-border-radius: 20px
+    -moz-border-radius: 20px
+    background: $dr-color
+
+.premium-info-icon
+    top: auto
+.premium-rate
+    font-size:20px
+    font-weight:600
+.font-12
+    font-size:12px !important
+ 
+@media (min-width: 1600px)
+  .theme-addoncover .check-default label:before
+    height: 36px
+    width: 36px
+    top: 2px!important
+  .theme-addoncover .check-default label:after
+    height: 29px
+    width: 29px
+    top: 5px!important
+    left: 4px
+  .theme-addoncover .error-msg
+    margin-left: -76px
+  .theme-addoncover .table-margin .error-msg
+    margin-left: -75px
+
+@media (max-width: 1600px)
+  .theme-addoncover .check-default label:before
+    height: 30px
+    width: 30px
+    top: 2px!important
+  .theme-addoncover .check-default label:after
+    height: 22px
+    width: 22px
+    top: 5px!important
+    left: 4px
+  .theme-addoncover .error-msg
+    margin-left: -78px
+  .theme-addoncover .table-margin .error-msg
+    margin-left: -8px
+    width: 250px
+
+@media screen and (max-width: 1400px)
+   .sub-head-sm
+      font-size: 14px
+@media screen and (max-width: 850px)
+  .theme-addoncover .error-msg
+        margin-left: -106px !important
+@media screen and (max-width: 580px)
+  .theme-addoncover .error-msg
+        margin-left: -80px !important
+  .theme-addoncover .table-margin .error-msg
+    margin-left: -70px
+   
+/*************** QUOTE LISTING ********************/ 
+.member-icon
+ width: 35px !important
+ height: 35px !important
+.premium-type div.pull-left
+ margin-top: 5px
+ margin-left: 10px
+.premium-card
+ margin-bottom: 30px
+/*************** QUOTE LISTING ********************/ 
+.inline-message
+ height:110px
+ font-size:$ft-12
+ font-weight:$ft-w-400
+ color:$primary-dark
+ opacity:50%
+
+.opacity-sm
+    opacity:.3
+.border-as-bottom
+    border-bottom: 1px dotted rgba(81, 96, 129, 0.5)
+.custom-file-label::after
+    content: none !important
+//.row
+//    width: -webkit-fill-available
+
+.upArrow
+ font-size: 27px
+ position: absolute
+ top: 11%
+ left: 70%
+ color: $clr-asqi !important
+
+.calender
+ top: 24%
+ width: 30px
+ left: 45%
+
+.modal-card
+ padding-top: 50px
+
+.premium-tooltip .tooltiptext
+    background-color:  transparent
+    color: $dark-grey-color
+    text-align: center
+    border-radius: 6px
+    padding: 5px 0
+    position: absolute
+    z-index: 1
+    width: 210px
+    bottom: 90%
+    word-break: break-all
+    opacity: 0
+    transition: opacity 0.3s
+.premium-tooltip .tooltiptext::after
+  content: ""
+  position: absolute
+  top: 100%
+  left: 50%
+  margin-left: -5px
+  border-width: 5px
+  border-style: solid
+  border-color: $dark-grey-color transparent transparent transparent
+
+.premium-tooltip:hover .tooltiptext
+    visibility: visible
+    opacity: 1
+
+.premium-tooltip
+    position: relative
+    display: inline-block
+
+.document-uw-name
+    text-decoration: underline
+.mini-search-icon
+ left: 57px
+ height: 18px
+ width: 25px
+ position: absolute
+  
+
+.topnav-master
+    overflow: hidden
+
+.topnav-master a
+    float: left
+    display: block
+    color: $clr-asqi
+    text-align: center
+    padding: 10px 10px
+    text-decoration: none
+    font-size: 15px
+    border-bottom: 5px solid $clr-asqi
+    font-weight: 600
+    cursor: pointer
+
+.topnav-master a:hover
+    border-bottom: 5px solid $primary-dark
+    color: $primary-dark
+
+.topnav-master a.active
+    border-bottom: 5px solid $primary-dark
+    color: $primary-dark
+
+.master-radio-margin-right
+    margin-right:5px !important
+
+.search-si-icon
+    height: 25px
+    width: 25px
+    position: absolute
+
+.table-row-card
+    display: revert
+    background: $card-bg
+    box-shadow: $outset
+    background-clip: padding-box
+    border-radius: 10px 10px 0 0
+    padding: 10px
+    border: none
+
+.as-master-table
+    border-collapse: separate
+    border-spacing: 0 2em
+
+.dsp-contents
+    display: contents
+
+.table-span-gq
+    overflow: hidden 
+    text-overflow: ellipsis
+    white-space: nowrap
+
+.table-data-gq
+    padding: 0 !important
+    font-family: $pop-semi
+    font-size: 13px !important
+    color: $primary-dark
+
+.uw-alert-msg
+    font-weight: 500 !important
+
+.message-button
+    background: $default
+    border-radius: 33px
+    font-size: 10px
+    text-decoration: underline
+    color: $primary-dark
+
+.border-as-bottom-top
+    border-bottom: 1px dotted rgba(81, 96, 129, 0.5)
+    border-top: 1px dotted rgba(81, 96, 129, 0.5)
+
+.border-as-top
+    border-top: 1px dotted rgba(81, 96, 129, 0.5)
+
+.border-as-bottom
+    border-bottom: 1px dotted rgba(81, 96, 129, 0.5)
+
+.icon-son-daughter
+    width:36px
+    height:36px
+
+.label-checked:hover
+    background: transparent linear-gradient(174deg, $bg-color-1 0%, $bg-color-2 100%) 0% 0% no-repeat padding-box
+    box-shadow: none !important
+    -webkit-box-shadow: none !important
+    -moz-box-shadow: none !important
+    background-clip: padding-box
+    -webkit-appearance: none
+    color: $default
+    pointer-events: none
+    opacity: 1 !important
+
+.label-checked:hover .icon-center
+    fill: $default
+
+.icon-yesterday
+    top: 50%
+    left: 50%
+    width: 45px
+    height: 45px
+
+.icon-share
+    top: 50%
+    left: 50%
+    width: 40px
+    height: 40px
+
+.icon-par
+    height: 55px !important
+    width: 45px !important
+    fill: $clr-primary !important
+    transform: translate(-20%, -40%) !important
+
+.share-btn
+    color: $clr-primary
+    opacity: 1
+    background: $btn-pri-bg
+    box-shadow: $outset
+    border-radius: 50%
+    border: none
+    font-size: 12px
+    margin-right: 10px
+    margin-bottom: 10px
+    min-width: 40px
+    padding:0px
+
+.search-si-icon
+    fill: $primary-dark
+
+.btn-si-search:hover .search-si-icon, .btn-si-search:focus .search-si-icon
+    fill: $default
+
+.add-vehicle-btn:hover, .add-vehicle-btn:active, .add-vehicle-btn:focus 
+    background: $btn-bg
+    color: $clr-primary
+
+.vehicle-details .card-content
+    border-radius:10px  !important
+
+.primary-dark-text
+    color: $primary-dark
+
+.svg-up-arrow
+    height: 20px
+    width: 20px
+    transform: rotate(90deg)
+    fill: $primary-dark
+
+.svg-down-arrow
+    height: 20px
+    width: 20px
+    transform: rotate(270deg)
+    fill: $primary-dark
+
+.sumInsured-error
+    padding-right: 0 !important
+    position: relative
+    display: block
+    margin: -0.5rem !important
+    bottom: 5px !important
+
+.icon-uploadFile
+    width:30px
+    height:25px !important
+    fill:$primary-dark
+
+.mb3-resp-rp
+    margin-bottom: 1rem
+
+.whitespace-nowrap
+    white-space: nowrap
+
+.form-control-small
+    padding: 15px 5px !important
+
+.docFormat-span
+    font-size : 13px
+    color : $clr-asqi
+    padding-left : 20px
+    display : inline-block
+
+@media screen and ( max-width:768px)
+    .premium-breakup td, .coverage-breakup td
+        padding: 5px !important
+        
+    .full-width-text
+        width: 100% !important
+        text-align: left
+    .page-title .heading
+        margin-top: 5px	!important
+        
+    .mb3-resp-rp
+        margin-bottom: 0rem
+
+    .upload-documents-form-field
+        margin-bottom: 1.5rem !important
+@media screen and(min-width: 1024px)
+.card-height
+  min-height:404px !important
+
+@media (max-width: 530px)
+    .mt-mobile
+        margin-top: 2rem
+    .auto-width-text
+        width: 50% !important
+
+@media (min-width: 1150px)
+    .policy-errMsg
+        position: relative !important
+        bottom: 20px !important
+
+@media screen and ( max-width:1600px)
+    .link-btn
+        font-size : 13px !important
+
+@media screen and ( min-width:1920px)
+    .sumInsured-error
+        bottom : -10px !important
+    .btm-0-xl
+        bottom : 0px !important
+    .custom-file-label
+        height : 70px
+        font-size : 18px
+        display : flex
+        align-items : center
+        justify-content : center
+    .docFormat-span
+        font-size : 16px
+        margin-top : 2rem
+    .btm-n15-xl
+        bottom : -15px !important
+    .theme-radio.radio-btn
+        height : 75px 
+    .theme-radio
+        margin-right : 15px 

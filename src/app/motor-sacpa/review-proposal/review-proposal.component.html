@@ -1,0 +1,406 @@
+<div class="theme-container" #target>
+    <div class="page-title">
+        <div (click)="routeBack()" class="nav-btn">
+            <svg>
+                <use xlink:href="#ICON_Arrow" />
+            </svg>
+        </div>
+        <div class="head-lg heading">REVIEW <span *ngIf="isProposalFinalized">FINALIZED</span> PROPOSAL</div>
+        <div class="pull-right breadcrum">
+            <span class="head-sm">Application / </span> <span class="head-sm">Review Proposal</span>
+        </div>
+    </div>
+    <form class="theme-form mt-mobile">
+        <div class="theme-card w-100 p-0">
+            <div class="card-content">
+                <div class="theme-label">(Reference Number: 123456789)</div>
+                <div class="disp-flex review-proposal preview-structure">
+                    <div class="flex-box-100">
+                        <div class="fw-100">
+                            <div class="head-sm pull-left">CUSTOMER DETAILS</div>
+                            <div class="pull-right">
+                                <button *ngIf="!isProposalFinalized" class="btn quotelist-btn m-0"> <svg class="svg-xs">
+                                        <use xlink:href="#ICON_Edit" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6 col-lg-3 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Customer Name</label>
+                                <span class="theme-value">Mukul Verma</span>
+                            </div>
+                            <div class="col-md-6 col-lg-2 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Date of Birth</label>
+                                <span class="theme-value">24/ 09/ 1996</span>
+                            </div>
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Email Id</label>
+                                <span class="theme-value">mukul.verma@geminisolutions.in</span>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Mobile Number</label>
+                                <span class="theme-value">+91 9871252265</span>
+                            </div>
+                            <div class="col col-md-6 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Address</label>
+                                <span class="theme-value">78 CP Sihani Gate, Near Navyug Market, Ghaziabad
+                                    (201001))</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-box-100">
+                        <div class="fw-100">
+                            <div class="head-sm pull-left">NOMINEE DETAILS</div>
+                            <div class="pull-right">
+                                <button *ngIf="!isProposalFinalized" class="btn quotelist-btn m-0"> <svg class="svg-xs">
+                                        <use xlink:href="#ICON_Edit" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Name of the Nominee</label>
+                                <span class="theme-value">Mukul Verma</span>
+                            </div>
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Date of Birth</label>
+                                <span class="theme-value">24/ 09/ 1996</span>
+                            </div>
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Relationship</label>
+                                <span class="theme-value">Brother</span>
+                            </div>
+                            <div class="col col-md-6 mb3-resp-rp">
+                                <label class="theme-label">Address of Nominee</label>
+                                <span class="theme-value">78 CP Sihani Gate, Near Navyug Market, Ghaziabad
+                                    (201001))</span>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col theme-label">Name of the Nominee</div>
+                            <div class="col theme-label">Date of Birth</div>
+                            <div class="col theme-label">Relationship</div>
+                            <div class="col theme-label">Address of Nominee</div>
+                        </div>
+                        <div class="row">
+                            <div class="col theme-value">Aman Singh</div>
+                            <div class="col theme-value">24/ 12/ 1997</div>
+                            <div class="col theme-value">Brother</div>
+                            <div class="col theme-value">78 CP Sihani Gate, Near Navyug Market Near Nehru Nagar,
+                                Ghaziabad (201001))</div>
+                        </div> -->
+                        <div class="fw-100 mt-4">
+                            <div class="head-sm pull-left primary-dark-text">APPOINTEE DETAILS</div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col theme-label">Name of Appointee</div>
+                            <div class="col theme-label">Date of Birth</div>
+                            <div class="col theme-label">Relationship</div>
+                            <div class="col theme-label">Address of Appointee</div>
+                        </div>
+                        <div class="row">
+                            <div class="col theme-value">Aman Singh</div>
+                            <div class="col theme-value">24/ 12/ 1997</div>
+                            <div class="col theme-value">Brother</div>
+                            <div class="col theme-value">78 CP Sihani Gate, Near Navyug Market, Ghaziabad (201001))
+                            </div>
+                        </div> -->
+                        <div class="row mb-2">
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Name of Appointee</label>
+                                <span class="theme-value">Mukul Verma</span>
+                            </div>
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Date of Birth</label>
+                                <span class="theme-value">24/ 09/ 1996</span>
+                            </div>
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Relationship</label>
+                                <span class="theme-value">Brother</span>
+                            </div>
+                            <div class="col col-md-6 mb3-resp-rp">
+                                <label class="theme-label">Address of Nominee</label>
+                                <span class="theme-value">78 CP Sihani Gate, Near Navyug Market, Ghaziabad
+                                    (201001))</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-box-100">
+                        <div class="fw-100">
+                            <div class="head-sm pull-left">INSURANCE DETAILS</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Policy Start Date</label>
+                                <span class="theme-value">24/12/2020</span>
+                            </div>
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label">Premium Ammount</label>
+                                <span class="theme-value full-width-text auto-width-text"><i class="fa fa-inr"></i>400
+                                </span>
+                                <span class="theme-value full-width-text font-sm">Inclusive GST</span>
+                                <span class="full-width-text">
+                                    <button (click)="openPremiumModal(premium_breakup_modal_template)" class="btn link-btn px-0 full-width-text">View Premium Breakup</button>
+                                </span>
+                            </div>
+                            <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                <label class="theme-label"> Capital Sum Insured</label>
+                                <span class="theme-value full-width-text auto-width-text"><i class="fa fa-inr"></i>15,00,00
+                                </span>
+                                <span class="d-block pt-3 pt-0 full-width-text">
+                                    <button  (click)="openCoverageModal(coverage_breakup_modal_template)" class="btn link-btn px-0">View Coverage Breakup</button>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col theme-label">Policy Start Date</div>
+                            <div class="col theme-label">Premium Ammount</div>
+                            <div class="col theme-label">Sum Insured</div>
+                        </div>
+                        <div class="row">
+                            <div class="col theme-value">24/12/2020</div>
+                            <div class="col theme-value"><i class="fa fa-inr"></i>400
+                            <span class="d-block font-sm">Inclusive GST</span>
+                            <span><button (click)="openPremiumModal(premium_breakup_modal_template)" class="btn link-btn font-sm1 pl-0">View Premium Breakup</button></span>
+                            </div>
+                            <div class="col theme-value"><i class="fa fa-inr"></i>15,00,00
+                                <span class="d-block pt-3"><button (click)="openCoverageModal(coverage_breakup_modal_template)" class="btn link-btn font-sm1 pl-0">View Coverage Breakup</button></span>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="flex-box-100">
+                        <div class="fw-100">
+                            <div class="head-sm pull-left">VEHICLE DETAILS</div>
+                            <div class="pull-right">
+                                <button *ngIf="!isProposalFinalized" class="btn quotelist-btn m-0"> <svg class="svg-xs">
+                                        <use xlink:href="#ICON_Edit" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div *ngFor="let vehicle of vehicleArray; index as i">
+                            <div [ngClass]="{'mt-4': i>0}" class="fw-100">
+                                <div class="head-sm pull-left primary-dark-text">Vehicle Details {{i+1}}</div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col theme-label">New Vehicle</div>
+                                <div class="col theme-label">Vehicle Registration No.</div>
+                                <div class="col theme-label">Vehicle Type</div>
+                                <div class="col theme-label">Make</div>
+                            </div>
+                            <div class="row">
+                                <div class="col theme-value">{{vehicle.vehicleStatus}}</div>
+                                <div class="col theme-value">{{vehicle.registrationNumber}}</div>
+                                <div class="col theme-value">{{vehicle.vehicleType}}</div>
+                                <div class="col theme-value">{{vehicle.make}}</div>
+                            </div> -->
+                            <div class="row mb-2">
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">New Vehicle</label>
+                                    <span class="theme-value">{{vehicle.vehicleStatus}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Vehicle Registration No.</label>
+                                    <span class="theme-value">{{vehicle.registrationNumber}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Vehicle Type</label>
+                                    <span class="theme-value">{{vehicle.vehicleType}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Make</label>
+                                    <span class="theme-value">{{vehicle.make}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Model</label>
+                                    <span class="theme-value">{{vehicle.model}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Year of Manufacturing</label>
+                                    <span class="theme-value">{{vehicle.manufacturingYear}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Engine Number</label>
+                                    <span class="theme-value">{{vehicle.engineNumber}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Chassis Number</label>
+                                    <span class="theme-value">{{vehicle.chassisNumber}}</span>
+                                </div>
+                            </div>
+                            <!-- <div class="row mt-5">
+                                <div class="col theme-label">Model</div>
+                                <div class="col theme-label">Year of Manufacturing</div>
+                                <div class="col theme-label">Engine Number</div>
+                                <div class="col theme-label">Chassis Number</div>
+                            </div>
+                            <div class="row">
+                                <div class="col theme-value">{{vehicle.model}}</div>
+                                <div class="col theme-value">{{vehicle.manufacturingYear}}</div>
+                                <div class="col theme-value">{{vehicle.engineNumber}}</div>
+                                <div class="col theme-value">{{vehicle.chassisNumber}}</div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="flex-box-100">
+                        <div class="fw-100">
+                            <div class="head-sm pull-left">EXISTING PA POLICY DETAILS</div>
+                            <div class="pull-right">
+                                <button *ngIf="!isProposalFinalized" class="btn quotelist-btn m-0"> <svg class="svg-xs">
+                                        <use xlink:href="#ICON_Edit" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                        <div *ngFor="let policy of paPolicyDetailsArray; index as i">
+                            <div class="fw-100">
+                                <div [ngClass]="{'mt-4': i>0}" class="head-sm pull-left primary-dark-text">EXISTING PA
+                                    POLICY DETAILS {{i+1}}</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Policy Number</label>
+                                    <span class="theme-value">{{policy.policyNumber}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Insurer</label>
+                                    <span class="theme-value">{{policy.insurer}}</span>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xl-3 mb3-resp-rp">
+                                    <label class="theme-label">Capital Sum Insured</label>
+                                    <span class="theme-value">{{policy.capitalSumInsured}}</span>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col theme-label">Policy Number</div>
+                                <div class="col theme-label">Insurer</div>
+                                <div class="col theme-label">Capital Sum Insured</div>
+                                <div class="col theme-label"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col theme-value">{{policy.policyNumber}}</div>
+                                <div class="col theme-value">{{policy.insurer}}</div>
+                                <div class="col theme-value">{{policy.capitalSumInsured}}</div>
+                                <div class="col theme-value"></div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-block m-t-lg">
+            <!-- <div class="proceed add-btn primary bg-blue"> -->
+                <ng-container *ngIf="isProposalFinalized; else elseTemplate">
+                    <button type="button"
+                        class="btn mob-text-btn primary-btn m-t-xs theme-lg-btn d-none d-md-inline">Proposal
+                        Clone</button>
+                    <button type="button" class="btn mob-text-btn primary-btn m-t-xs theme-lg-btn active">Make
+                        Payment</button>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <button type="button" (click)="finalizeProposal()"
+                        class="btn mob-text-btn primary-btn m-t-xs theme-lg-btn">Finalize Proposal</button>
+                </ng-template>
+            <!-- </div> -->
+        </div>
+    </form>
+
+</div>
+<ng-template #premium_breakup_modal_template>
+    <div class="detail-container-modal modal-md success-info">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">PREMIUM BREAKUP</h4>
+            <div class="close-icon" (click)="premiumBreakupModalRef.hide()">
+                <svg>
+                    <use xlink:href="#ICON_Cross" />
+                </svg>
+            </div>
+        </div>
+        <div class="modal-body succes-container">
+            <div class="row border-as-top">
+                <table aria-hidden="true" class="w-100  premium-breakup mt-3">
+                    <tr>
+                        <td class="fixed-width pl-5"><span class="head-sm">Net Premium</span></td>
+                        <td class="pull-right pr-5"><span class="head-sm"><i class="fa fa-inr"></i>400</span></td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-width pl-5"><span class="theme-label">GST @ 9%</span></td>
+                        <td class="pull-right pr-5"><span class="head-sm"><i class="fa fa-inr"></i>20</span></td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-width pl-5"><span class="theme-label">SGST @ 9%</span></td>
+                        <td class="pull-right pr-5"><span class="head-sm"><i class="fa fa-inr"></i>20</span></td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-width pl-5"><span class="theme-label">IGST @18%</span></td>
+                        <td class="pull-right pr-5"><span class="head-sm"><i class="fa fa-inr"></i>30</span></td>
+                    </tr>
+                    <tr>
+                        <td class="fixed-width pl-5"><span class="theme-label whitespace-nowrap">Kerela Flood Cess @
+                                1%</span></td>
+                        <td class="pull-right pr-5"><span class="head-sm"><i class="fa fa-inr"></i>30</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row mt-4 border-as-bottom-top">
+                <table aria-hidden="true" class="w-100  premium-breakup my-4">
+                    <tr>
+                        <td class="pl-5"><span class="theme-value">Total Premium Amount</span></td>
+                        <td class="pull-right pr-5"><span class="theme-value"><i class="fa fa-inr"></i>500</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-12 text-center m-30-0">
+                <button type="button" (click)="premiumBreakupModalRef.hide()"
+                    class="btn btn-mob primary-btn m-t">Done</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #coverage_breakup_modal_template>
+    <div class="detail-container-modal modal-md success-info">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">COVERAGE BREAKUP</h4>
+            <div class="close-icon" (click)="coverageBreakupModalRef.hide()">
+                <svg>
+                    <use xlink:href="#ICON_Cross" />
+                </svg>
+            </div>
+        </div>
+        <div class="modal-body succes-container">
+            <div class="row border-as-top">
+                <div class="fw-100">
+                    <div class="head-sm pull-left mt-3 pl-2">Personal Accident Coverage Details</div>
+                </div>
+                <table aria-hidden="true" class="w-100 coverage-breakup">
+                    <tr class="border-as-bottom">
+                        <td class="fixed-width pl-5 py-3"><span class="theme-label">Death</span></td>
+                        <td class="pull-right pr-5 py-3"><span class="head-sm"><i class="fa fa-inr"></i>15,00,000</span>
+                        </td>
+                    </tr>
+                    <tr class="border-as-bottom">
+                        <td class="fixed-width pl-5 py-3"><span class="theme-label">Loss of Two Limbs or sight of two
+                                eyes or one limb and sight of one eye</span></td>
+                        <td class="pull-right pr-5 py-3"><span class="head-sm"><i class="fa fa-inr"></i>15,00,000</span>
+                        </td>
+                    </tr>
+                    <tr class="border-as-bottom">
+                        <td class="fixed-width pl-5 py-3"><span class="theme-label">Loss of one limbor sight of one
+                                eye</span></td>
+                        <td class="pull-right pr-5 py-3"><span class="head-sm"><i class="fa fa-inr"></i>7,50,000</span>
+                        </td>
+                    </tr>
+                    <tr class="border-as-bottom">
+                        <td class="fixed-width pl-5 py-3"><span class="theme-label">Permanent total disablement from
+                                injuries other than named above</span></td>
+                        <td class="pull-right pr-5 py-3"><span class="head-sm"><i class="fa fa-inr"></i>15,00,000</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-12 text-center m-30-0">
+                <button type="button" (click)="coverageBreakupModalRef.hide()"
+                    class="btn btn-mob primary-btn m-t">Done</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
